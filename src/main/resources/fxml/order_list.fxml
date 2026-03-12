@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.dasalla.pos.controller.OrderListController"
+      styleClass="screen-root" spacing="0"
+      prefWidth="420" prefHeight="700">
+
+    <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="8">
+        <Button fx:id="btnBack" text="&lt; Back" styleClass="btn-back"/>
+        <Label text="All Orders" styleClass="top-bar-title" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <VBox spacing="10" styleClass="content-pad" VBox.vgrow="ALWAYS">
+        <VBox styleClass="card" spacing="8">
+            <HBox spacing="8">
+                <TextField fx:id="searchField" promptText="Search orders..." styleClass="input-field" HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="statusFilter" prefWidth="120"/>
+                <Button fx:id="btnSearch" text="Search" styleClass="btn-secondary"/>
+            </HBox>
+        </VBox>
+
+        <Label text="Double-click an order to view details" styleClass="hint-label"/>
+
+        <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+            <columns>
+                <TableColumn fx:id="colOrderNum" text="Order #" prefWidth="70"/>
+                <TableColumn fx:id="colCustomer" text="Customer" prefWidth="100"/>
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="80"/>
+                <TableColumn fx:id="colPayment" text="Payment" prefWidth="70"/>
+                <TableColumn fx:id="colTotal" text="Total" prefWidth="75"/>
+                <TableColumn fx:id="colDate" text="Date" prefWidth="110"/>
+            </columns>
+            <placeholder><Label text="No orders found"/></placeholder>
+        </TableView>
+    </VBox>
+</VBox>

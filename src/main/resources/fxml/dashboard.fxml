@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.cell.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.dasalla.pos.controller.DashboardController"
+      styleClass="screen-root" spacing="0"
+      prefWidth="420" prefHeight="700">
+
+    <!-- Header -->
+    <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="8">
+        <VBox HBox.hgrow="ALWAYS">
+            <Label fx:id="welcomeLabel" text="Welcome" styleClass="top-bar-title"/>
+            <Label fx:id="roleLabel" text="STAFF" styleClass="top-bar-sub"/>
+        </VBox>
+        <Button fx:id="btnLogout" text="Logout" styleClass="btn-outline-sm"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" styleClass="main-scroll" VBox.vgrow="ALWAYS">
+        <VBox spacing="12" styleClass="content-pad">
+
+            <!-- Alert -->
+            <Label fx:id="lowStockAlert" text="" styleClass="alert-warning" wrapText="true" visible="false" managed="false"/>
+
+            <!-- Stats -->
+            <Label text="Role-based Access" styleClass="section-title"/>
+            <HBox spacing="10">
+                <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Revenue" styleClass="stat-label"/>
+                    <Label fx:id="revenueLabel" text="₱0.00" styleClass="stat-value-green"/>
+                    <ComboBox fx:id="periodCombo" styleClass="period-combo" prefWidth="110"/>
+                </VBox>
+                <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Orders" styleClass="stat-label"/>
+                    <Label fx:id="ordersCountLabel" text="0" styleClass="stat-value"/>
+                </VBox>
+                <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Pending" styleClass="stat-label"/>
+                    <Label fx:id="pendingLabel" text="0" styleClass="stat-value"/>
+                </VBox>
+                <VBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER">
+                    <Label text="Done" styleClass="stat-label"/>
+                    <Label fx:id="completedLabel" text="0" styleClass="stat-value"/>
+                </VBox>
+            </HBox>
+
+            <!-- Quick Actions -->
+            <Label text="Quick Actions" styleClass="section-title"/>
+            <GridPane hgap="10" vgap="10">
+                <Button fx:id="btnNewOrder" text="➕ New Order" styleClass="btn-primary"
+                        maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Button fx:id="btnOrders" text="📋 Orders" styleClass="btn-secondary"
+                        maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Button fx:id="btnInventory" text="📦 Inventory" styleClass="btn-secondary"
+                        maxWidth="Infinity" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Button fx:id="btnTransactions" text="💳 Transactions" styleClass="btn-secondary"
+                        maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="50"/>
+                </columnConstraints>
+            </GridPane>
+
+            <!-- Active Orders -->
+            <Label text="Active Orders (double-click to open)" styleClass="section-title"/>
+            <TableView fx:id="activeOrdersTable" prefHeight="200" styleClass="data-table">
+                <columns>
+                    <TableColumn fx:id="colOrderNum" text="Order #" prefWidth="70"/>
+                    <TableColumn fx:id="colCustomer" text="Customer" prefWidth="100"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="80"/>
+                    <TableColumn fx:id="colTotal" text="Total" prefWidth="80"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="0"/>
+                </columns>
+                <placeholder><Label text="No active orders"/></placeholder>
+            </TableView>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

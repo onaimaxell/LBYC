@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.dasalla.pos.controller.InventoryController"
+      styleClass="screen-root" spacing="0"
+      prefWidth="420" prefHeight="700">
+
+    <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="8">
+        <Button fx:id="btnBack" text="&lt; Back" styleClass="btn-back"/>
+        <Label text="Inventory &amp; Supplies" styleClass="top-bar-title" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" styleClass="main-scroll" VBox.vgrow="ALWAYS">
+        <VBox spacing="12" styleClass="content-pad">
+
+            <Label fx:id="alertLabel" text="" styleClass="alert-warning" wrapText="true" visible="false" managed="false"/>
+
+            <!-- Table -->
+            <VBox styleClass="card" spacing="8">
+                <TableView fx:id="inventoryTable" prefHeight="260" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="colItemName" text="Item" prefWidth="140"/>
+                        <TableColumn fx:id="colStock" text="Stock" prefWidth="120"/>
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="60"/>
+                        <TableColumn fx:id="colActions" text="Actions" prefWidth="120"/>
+                    </columns>
+                    <placeholder><Label text="No inventory items"/></placeholder>
+                </TableView>
+            </VBox>
+
+            <!-- Add Item Form -->
+            <VBox styleClass="card" spacing="10">
+                <Label text="Add New Item" styleClass="section-title"/>
+                <VBox spacing="6">
+                    <Label text="Item Name" styleClass="field-label"/>
+                    <TextField fx:id="itemNameField" promptText="e.g. Detergent" styleClass="input-field"/>
+                </VBox>
+                <HBox spacing="10">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Quantity" styleClass="field-label"/>
+                        <TextField fx:id="quantityField" promptText="0" styleClass="input-field"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Unit" styleClass="field-label"/>
+                        <TextField fx:id="unitField" promptText="bottles" styleClass="input-field"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="10">
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Restock Alert At" styleClass="field-label"/>
+                        <TextField fx:id="thresholdField" promptText="10" styleClass="input-field"/>
+                    </VBox>
+                    <VBox spacing="6" HBox.hgrow="ALWAYS">
+                        <Label text="Unit Cost (₱)" styleClass="field-label"/>
+                        <TextField fx:id="costField" promptText="0.00" styleClass="input-field"/>
+                    </VBox>
+                </HBox>
+                <Button fx:id="btnAddItem" text="+ Add Item" styleClass="btn-primary" maxWidth="Infinity"/>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+</VBox>

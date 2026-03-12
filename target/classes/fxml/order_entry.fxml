@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.dasalla.pos.controller.OrderEntryController"
+      styleClass="screen-root" spacing="0"
+      prefWidth="420" prefHeight="700">
+
+    <!-- Header -->
+    <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="8">
+        <Button fx:id="btnBack" text="&lt; Back" styleClass="btn-back"/>
+        <Label text="Order Entry" styleClass="top-bar-title" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" styleClass="main-scroll" VBox.vgrow="ALWAYS">
+        <VBox spacing="14" styleClass="content-pad">
+
+            <!-- Customer Info -->
+            <VBox styleClass="card" spacing="10">
+                <VBox spacing="6">
+                    <Label text="Name" styleClass="field-label"/>
+                    <TextField fx:id="customerNameField" promptText="Enter customer name" styleClass="input-field"/>
+                </VBox>
+                <VBox spacing="6">
+                    <Label text="Phone #" styleClass="field-label"/>
+                    <TextField fx:id="customerPhoneField" promptText="09XX-XXX-XXXX" styleClass="input-field"/>
+                </VBox>
+            </VBox>
+
+            <!-- Service Type -->
+            <VBox styleClass="card" spacing="10">
+                <Label text="Service Type" styleClass="field-label"/>
+                <HBox spacing="8">
+                    <ToggleButton fx:id="btnWashFold" text="Wash &amp; Fold" styleClass="service-tab" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <ToggleButton fx:id="btnDryCleaning" text="Dry Cleaning" styleClass="service-tab" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <ToggleButton fx:id="btnIroning" text="Ironing" styleClass="service-tab" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+
+                <!-- Quantity and Price -->
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <VBox HBox.hgrow="ALWAYS" spacing="4">
+                        <Label text="Weight (kg)" styleClass="field-label"/>
+                        <Spinner fx:id="quantitySpinner" styleClass="qty-spinner" prefWidth="120"/>
+                    </VBox>
+                    <VBox alignment="CENTER_RIGHT">
+                        <Label text="Price" styleClass="field-label"/>
+                        <Label fx:id="priceLabel" text="₱0" styleClass="price-display"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Add-ons -->
+                <Label text="Add-ons" styleClass="field-label"/>
+                <HBox spacing="8">
+                    <CheckBox fx:id="expressAddon" text="Express (+₱50)" styleClass="addon-check"/>
+                    <CheckBox fx:id="delicateAddon" text="Delicate (+₱30)" styleClass="addon-check"/>
+                    <CheckBox fx:id="stainRemovalAddon" text="Stain (+₱20)" styleClass="addon-check"/>
+                </HBox>
+            </VBox>
+
+            <!-- Items Table -->
+            <VBox styleClass="card" spacing="8">
+                <Label text="Order Items" styleClass="field-label"/>
+                <TableView fx:id="itemsTable" prefHeight="150" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="colItemDesc" text="Description" prefWidth="180"/>
+                        <TableColumn fx:id="colItemQty" text="Qty" prefWidth="50"/>
+                        <TableColumn fx:id="colItemPrice" text="Price" prefWidth="80"/>
+                        <TableColumn fx:id="colItemAction" text="" prefWidth="50"/>
+                    </columns>
+                    <placeholder><Label text="No items added yet"/></placeholder>
+                </TableView>
+                <HBox alignment="CENTER_RIGHT" spacing="8">
+                    <Label text="Total:" styleClass="field-label"/>
+                    <Label fx:id="totalLabel" text="₱0.00" styleClass="total-label"/>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- Bottom Buttons -->
+    <HBox styleClass="bottom-bar" spacing="10">
+        <Button fx:id="btnAddItem" text="+ Add Item" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button fx:id="btnReset" text="↺ Reset" styleClass="btn-outline" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button fx:id="btnPlaceOrder" text="→ Place Order" styleClass="btn-primary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+    </HBox>
+</VBox>

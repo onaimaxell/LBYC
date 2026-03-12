@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.dasalla.pos.controller.TransactionHistoryController"
+      styleClass="screen-root" spacing="0"
+      prefWidth="420" prefHeight="700">
+
+    <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="8">
+        <Button fx:id="btnBack" text="&lt; Back" styleClass="btn-back"/>
+        <Label text="Transaction History" styleClass="top-bar-title" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <VBox spacing="10" styleClass="content-pad">
+        <!-- Filters -->
+        <VBox styleClass="card" spacing="8">
+            <TextField fx:id="searchField" promptText="Search by customer or order #" styleClass="input-field"/>
+            <HBox spacing="8">
+                <DatePicker fx:id="dateFromPicker" promptText="Date From" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <DatePicker fx:id="dateToPicker" promptText="Date To" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+            <HBox spacing="8">
+                <Button fx:id="btnSearch" text="🔍 Search" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button fx:id="btnExport" text="📥 Export CSV" styleClass="btn-outline" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+        </VBox>
+
+        <!-- Table -->
+        <TableView fx:id="transactionTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+            <columns>
+                <TableColumn fx:id="colOrderNum" text="Order #" prefWidth="70"/>
+                <TableColumn fx:id="colCustomer" text="Customer" prefWidth="100"/>
+                <TableColumn fx:id="colAmount" text="Amount" prefWidth="80"/>
+                <TableColumn fx:id="colMethod" text="Method" prefWidth="60"/>
+                <TableColumn fx:id="colRef" text="GCash Ref" prefWidth="80"/>
+                <TableColumn fx:id="colDate" text="Date" prefWidth="120"/>
+            </columns>
+            <placeholder><Label text="No transactions found"/></placeholder>
+        </TableView>
+
+        <Label fx:id="totalLabel" text="Total: ₱0.00" styleClass="total-label"/>
+    </VBox>
+</VBox>
