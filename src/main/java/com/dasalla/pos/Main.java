@@ -19,9 +19,16 @@ public class Main extends Application {
         Scene scene = new Scene(root, 420, 700);
         scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
 
+        // primaryStage.setTitle("Dasalla Laundry POS");
+        // primaryStage.setScene(scene);
+        // primaryStage.setResizable(false);
+        // primaryStage.show();
         primaryStage.setTitle("Dasalla Laundry POS");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
+        primaryStage.setMinWidth(400);
+        primaryStage.setMinHeight(600);
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

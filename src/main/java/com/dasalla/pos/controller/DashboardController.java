@@ -1,22 +1,26 @@
 package com.dasalla.pos.controller;
 
+import java.util.List;
+
 import com.dasalla.pos.model.Order;
 import com.dasalla.pos.service.InventoryService;
 import com.dasalla.pos.service.OrderService;
+import com.dasalla.pos.util.SceneUtil;
 import com.dasalla.pos.util.SessionManager;
-import javafx.application.Platform;
+
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.List;
 
 public class DashboardController {
 
@@ -126,9 +130,15 @@ public class DashboardController {
                 showAlert("Error", "FXML not found: " + fxmlPath + ". Run: mvn clean compile");
                 return;
             }
+
+            // TODO
+            // Fix ui going back to default resolution when changing scene
             FXMLLoader loader = new FXMLLoader(url);
             Parent root = loader.load();
             Stage stage = (Stage) btnNewOrder.getScene().getWindow();
+            // paul
+            SceneUtil.switchScene(stage, "/fxml/dashboard.fxml");
+
             Scene scene = new Scene(root, 420, 700);
             scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
             stage.setScene(scene);
@@ -140,6 +150,7 @@ public class DashboardController {
 
     private void openOrderSummary(String orderNumber) {
         try {
+            // Fix ui going back to default resolution when changing scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/order_summary.fxml"));
             Parent root = loader.load();
             OrderSummaryController controller = loader.getController();

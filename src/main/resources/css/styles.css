@@ -4,6 +4,22 @@
     -fx-font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* paul */
+/* new */
+.screen-root {
+    -fx-background-color: #f0f1f8;
+    -fx-min-width: 400;
+}
+
+.card {
+
+}
+
+.login-card {
+    -fx-max-width: 420;
+}
+/* new */
+
 /* Top Bar */
 .top-bar {
     -fx-background-color: #ffffff;

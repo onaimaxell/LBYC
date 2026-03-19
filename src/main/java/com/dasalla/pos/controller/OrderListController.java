@@ -63,6 +63,7 @@ public class OrderListController {
 
     private void openOrderSummary(String orderNumber) {
         try {
+            // Fix ui going back to default resolution when changing scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/order_summary.fxml"));
             Parent root = loader.load();
             OrderSummaryController controller = loader.getController();
@@ -76,12 +77,17 @@ public class OrderListController {
 
     private void goBack() {
         try {
+            // Fix ui going back to default resolution when changing scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashboard.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) btnBack.getScene().getWindow();
+            // paul
+
             Scene scene = new Scene(root, 420, 700);
             scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
             stage.setScene(scene);
+            // paul
+
         } catch (Exception e) { e.printStackTrace(); }
     }
 }

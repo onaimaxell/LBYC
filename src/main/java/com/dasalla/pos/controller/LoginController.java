@@ -53,6 +53,7 @@ public class LoginController {
 
     private void openDashboard() {
         try {
+            // Fix ui going back to default resolution when changing scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashboard.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) loginButton.getScene().getWindow();
