@@ -16,7 +16,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root, 420, 700);
+        Scene scene = new Scene(root, 1024, 768);
         scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
 
         // primaryStage.setTitle("Dasalla Laundry POS");
@@ -26,8 +26,8 @@ public class Main extends Application {
         primaryStage.setTitle("Dasalla Laundry POS");
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
-        primaryStage.setMinWidth(400);
-        primaryStage.setMinHeight(600);
+        primaryStage.setMinWidth(1024);
+        primaryStage.setMinHeight(768);
         primaryStage.centerOnScreen();
         primaryStage.show();
     }

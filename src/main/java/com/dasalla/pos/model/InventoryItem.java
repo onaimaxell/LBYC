@@ -8,6 +8,7 @@ public class InventoryItem {
     private int restockThreshold;
     private double unitCost;
     private String updatedAt;
+    private double usagePerKg;
 
     public InventoryItem() {}
 
@@ -50,5 +51,13 @@ public class InventoryItem {
 
     public String getStockStatus() {
         return isLowStock() ? "LOW" : "OK";
+    }
+
+    public double getUsagePerKg() { return usagePerKg; }
+    public void setUsagePerKg(double usagePerKg) { this.usagePerKg = usagePerKg; }
+
+    public String getUsageDisplay() {
+        if (usagePerKg <= 0) return "N/A";
+        return String.format("1 %s per %.0f kg", unit, usagePerKg);
     }
 }

@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.dasalla.pos.controller.LoginController"
@@ -11,7 +12,14 @@
       prefWidth="420" prefHeight="700">
 
     <VBox alignment="CENTER" spacing="8" styleClass="login-header">
-        <Label text="👕" style="-fx-font-size: 52px;"/>
+        <!-- <Label text="👕" style="-fx-font-size: 52px;"/> -->
+
+        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+        <image>
+            <Image url="@../images/logo.jpg"/>
+        </image>
+        </ImageView>
+
         <Label text="Dasalla Laundry" styleClass="app-title"/>
         <Label text="Point of Sale System" styleClass="app-subtitle"/>
     </VBox>
@@ -33,7 +41,8 @@
 
         <Button fx:id="loginButton" text="Login" styleClass="btn-primary" maxWidth="Infinity"/>
 
-        <Label text="Default accounts: admin/admin123 | cashier/cashier123 | staff/staff123"
+        <!-- Add Item Form -->
+        <Label text="Admin credential: admin/admin123"
                styleClass="hint-label" wrapText="true" textAlignment="CENTER"/>
     </VBox>
 

@@ -24,6 +24,7 @@
                     <columns>
                         <TableColumn fx:id="colItemName" text="Item" prefWidth="140"/>
                         <TableColumn fx:id="colStock" text="Stock" prefWidth="120"/>
+                        <TableColumn fx:id="colUsage" text="Usage Rate" prefWidth="120"/>
                         <TableColumn fx:id="colStatus" text="Status" prefWidth="60"/>
                         <TableColumn fx:id="colActions" text="Actions" prefWidth="120"/>
                     </columns>

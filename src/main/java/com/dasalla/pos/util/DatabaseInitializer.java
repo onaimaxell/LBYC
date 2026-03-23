@@ -90,6 +90,7 @@ public class DatabaseInitializer {
                     unit TEXT NOT NULL DEFAULT 'bottles',
                     restock_threshold INTEGER NOT NULL DEFAULT 10,
                     unit_cost REAL NOT NULL DEFAULT 0,
+                    usage_per_kg REAL NOT NULL DEFAULT 0,
                     updated_at TEXT DEFAULT (datetime('now','localtime'))
                 )
             """);
@@ -110,20 +111,20 @@ public class DatabaseInitializer {
 
             // Seed default inventory
             stmt.execute("""
-                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost)
-                VALUES ('Detergent', 30, 'bottles', 10, 85.00)
+                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost, usage_per_kg)
+                VALUES ('Detergent', 30, 'bottles', 10, 85.00, 5.0)
             """);
             stmt.execute("""
-                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost)
-                VALUES ('Fabric Softener', 25, 'bottles', 8, 120.00)
+                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost, usage_per_kg)
+                VALUES ('Fabric Softener', 25, 'bottles', 8, 120.00, 7.0)
             """);
             stmt.execute("""
-                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost)
-                VALUES ('Bleach', 15, 'bottles', 5, 65.00)
+                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost, usage_per_kg)
+                VALUES ('Bleach', 15, 'bottles', 5, 65.00, 10.0)
             """);
             stmt.execute("""
-                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost)
-                VALUES ('Dryer Sheets', 50, 'pcs', 20, 5.00)
+                INSERT OR IGNORE INTO inventory (item_name, quantity, unit, restock_threshold, unit_cost, usage_per_kg)
+                VALUES ('Dryer Sheets', 50, 'pcs', 20, 5.00, 0.0)
             """);
 
             System.out.println("Database initialized successfully.");

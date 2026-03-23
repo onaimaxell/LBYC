@@ -1,11 +1,15 @@
 package com.dasalla.pos.dao;
 
-import com.dasalla.pos.model.InventoryItem;
-import com.dasalla.pos.util.DatabaseConnection;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.dasalla.pos.model.InventoryItem;
+import com.dasalla.pos.util.DatabaseConnection;
 
 public class InventoryDAO {
 
@@ -103,7 +107,10 @@ public class InventoryDAO {
         item.setQuantity(rs.getInt("quantity"));
         item.setUnit(rs.getString("unit"));
         item.setRestockThreshold(rs.getInt("restock_threshold"));
+        //item.setUnitCost(rs.getDouble("unit_cost"));
+        //item.setUpdatedAt(rs.getString("updated_at"));
         item.setUnitCost(rs.getDouble("unit_cost"));
+        item.setUsagePerKg(rs.getDouble("usage_per_kg"));
         item.setUpdatedAt(rs.getString("updated_at"));
         return item;
     }

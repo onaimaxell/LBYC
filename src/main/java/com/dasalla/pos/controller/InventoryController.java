@@ -1,25 +1,35 @@
 package com.dasalla.pos.controller;
 
+import java.util.Optional;
+
 import com.dasalla.pos.model.InventoryItem;
 import com.dasalla.pos.service.InventoryService;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
-import java.util.Optional;
 
 public class InventoryController {
 
     @FXML private TableView<InventoryItem> inventoryTable;
     @FXML private TableColumn<InventoryItem, String> colItemName;
     @FXML private TableColumn<InventoryItem, String> colStock;
+    @FXML private TableColumn<InventoryItem, String> colUsage;
     @FXML private TableColumn<InventoryItem, String> colStatus;
     @FXML private TableColumn<InventoryItem, Void> colActions;
 
@@ -46,6 +56,7 @@ public class InventoryController {
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("stockDisplay"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("stockStatus"));
+        colUsage.setCellValueFactory(new PropertyValueFactory<>("usageDisplay"));
 
         colStatus.setCellFactory(col -> new TableCell<>() {
             @Override
